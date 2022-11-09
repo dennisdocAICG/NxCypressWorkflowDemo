@@ -10,7 +10,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     name: Testing
-    uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.8
     
     steps:
     - run: npm run test
