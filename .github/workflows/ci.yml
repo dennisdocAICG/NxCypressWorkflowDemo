@@ -10,8 +10,8 @@ jobs:
   checkout: 
     runs-on: ubuntu-latest
     - uses: actions/checkout@v3
-    with:
-      ref: master
+      with:
+        ref: master
   test:
     runs-on: ubuntu-latest
     name: Testing
