@@ -18,6 +18,4 @@ jobs:
     name: Testing
     
     steps:
-    - run: git checkout master  
-    - run: git pull master  
     - run: npm run test
