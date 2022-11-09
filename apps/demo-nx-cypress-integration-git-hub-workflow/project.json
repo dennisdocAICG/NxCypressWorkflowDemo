@@ -20,7 +20,8 @@
           "apps/demo-nx-cypress-integration-git-hub-workflow/src/assets"
         ],
         "styles": [
-          "apps/demo-nx-cypress-integration-git-hub-workflow/src/styles.less"
+          "apps/demo-nx-cypress-integration-git-hub-workflow/src/styles.less",
+          "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
         ],
         "scripts": []
       },

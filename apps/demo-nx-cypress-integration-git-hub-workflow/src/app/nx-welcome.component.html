@@ -1,0 +1,16 @@
+<div class="center">
+  <input id="personName" nz-input placeholder="Name" [(ngModel)]="person.name" name="name" />
+  <br />
+  <input
+    nz-input
+    placeholder="E-mail"
+    [(ngModel)]="person.email"
+    name="email"
+    id="personEmail"
+    [disabled]="true"
+  />
+  <br />
+  <button id="submit" nz-button [nzType]="'primary'" (click)="submit()">
+    Submit
+  </button>
+</div>
