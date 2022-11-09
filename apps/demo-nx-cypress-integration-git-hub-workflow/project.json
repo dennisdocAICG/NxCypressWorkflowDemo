@@ -1,0 +1,97 @@
+{
+  "name": "demo-nx-cypress-integration-git-hub-workflow",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/demo-nx-cypress-integration-git-hub-workflow/src",
+  "prefix": "demo-nx-cypress-integration",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/demo-nx-cypress-integration-git-hub-workflow",
+        "index": "apps/demo-nx-cypress-integration-git-hub-workflow/src/index.html",
+        "main": "apps/demo-nx-cypress-integration-git-hub-workflow/src/main.ts",
+        "polyfills": "apps/demo-nx-cypress-integration-git-hub-workflow/src/polyfills.ts",
+        "tsConfig": "apps/demo-nx-cypress-integration-git-hub-workflow/tsconfig.app.json",
+        "inlineStyleLanguage": "less",
+        "assets": [
+          "apps/demo-nx-cypress-integration-git-hub-workflow/src/favicon.ico",
+          "apps/demo-nx-cypress-integration-git-hub-workflow/src/assets"
+        ],
+        "styles": [
+          "apps/demo-nx-cypress-integration-git-hub-workflow/src/styles.less"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/demo-nx-cypress-integration-git-hub-workflow/src/environments/environment.ts",
+              "with": "apps/demo-nx-cypress-integration-git-hub-workflow/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "demo-nx-cypress-integration-git-hub-workflow:build:production"
+        },
+        "development": {
+          "browserTarget": "demo-nx-cypress-integration-git-hub-workflow:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "demo-nx-cypress-integration-git-hub-workflow:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/demo-nx-cypress-integration-git-hub-workflow/**/*.ts",
+          "apps/demo-nx-cypress-integration-git-hub-workflow/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/demo-nx-cypress-integration-git-hub-workflow/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

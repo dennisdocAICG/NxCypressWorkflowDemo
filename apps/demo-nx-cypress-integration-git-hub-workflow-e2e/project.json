@@ -1,0 +1,32 @@
+{
+  "name": "demo-nx-cypress-integration-git-hub-workflow-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/demo-nx-cypress-integration-git-hub-workflow-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/demo-nx-cypress-integration-git-hub-workflow-e2e/cypress.config.ts",
+        "devServerTarget": "demo-nx-cypress-integration-git-hub-workflow:serve:development",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "demo-nx-cypress-integration-git-hub-workflow:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/demo-nx-cypress-integration-git-hub-workflow-e2e/**/*.{js,ts}"
+        ]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["demo-nx-cypress-integration-git-hub-workflow"]
+}
