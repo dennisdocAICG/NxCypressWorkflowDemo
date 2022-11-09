@@ -7,11 +7,16 @@ on:
   pull_request:
 
 jobs:
+  checkout: 
+    runs-on: ubuntu-latest
+    - uses: actions/checkout@v3
+    with:
+      ref: master
   test:
     runs-on: ubuntu-latest
     name: Testing
     
     steps:
     - run: git checkout master  
-    - run: git pull origin master  
+    - run: git pull master  
     - run: npm run test
