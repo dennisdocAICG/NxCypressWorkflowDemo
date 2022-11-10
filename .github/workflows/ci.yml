@@ -19,4 +19,4 @@ jobs:
     needs: checkout
     
     steps:
-    - run: npm run test
+    - run: nx test
