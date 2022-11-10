@@ -18,7 +18,13 @@ jobs:
     name: Testing
     needs: checkout
     steps:
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Checkout
+        uses: actions/checkout@v2
+        with:
+        ref: master
+    - name: Use Node.js
       uses: actions/setup-node@v1
     - run: npm install
+    - name: Use Node.js for Test
+      uses: actions/setup-node@v1
     - run: npm run test
