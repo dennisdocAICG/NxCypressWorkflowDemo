@@ -17,6 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Testing
     needs: checkout
+    strategy:
+      matrix:
+        node-version: [12.x]
     
     steps:
-    - run: nx test
+    uses: actions/setup-node@v1
+    - run: npm install
+    - run: npm run test
+    working-directory: ./
