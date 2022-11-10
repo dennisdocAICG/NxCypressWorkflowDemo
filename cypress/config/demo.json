@@ -1,0 +1,21 @@
+{
+    "baseUrl": "http://localhost:4200/",
+    "fileServerFolder": ".",
+    "fixturesFolder": "./cypress/fixtures",
+    "integrationFolder": "../../apps/demo-nx-cypress-integration-git-hub-workspace-e2e/src/e2e/",
+    "modifyObstructiveCode": false,
+    "pluginsFile": "../cypress/plugins/index",
+    "supportFile": "../cypress/support/index.ts",
+    "video": true,
+    "videosFolder": "../dist/cypress/apps/e2e/videos",
+    "screenshotsFolder": "../dist/cypress/e2e/screenshots",
+    "chromeWebSecurity": false,
+    "defaultCommandTimeout": 10000,
+  
+    "env": {
+      "auth_audience": "http://localhost:7000",
+      "auth_client_id": "DpfmPtchLCK7JDAgX28mLBUtD63MQDJh",
+      "auth_url": "https://datalakehouse.us.auth0.com/oauth/token"
+    }
+  }
+  

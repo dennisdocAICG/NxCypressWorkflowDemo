@@ -7,7 +7,9 @@
     "postinstall": "node ./decorate-angular-cli.js",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test-nx": "nx test",
+    "test": "npx start-server-and-test start http://localhost:3000 cy:run:datalakehouse",
+    "cypress": "npx cypress run --env 'configFile=demo'"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +24,7 @@
     "@nrwl/angular": "15.0.13",
     "ng-zorro-antd": "^14.1.1",
     "rxjs": "~7.5.0",
+    "start-server-and-test": "^1.14.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
