@@ -8,7 +8,7 @@
     "start": "nx serve --port=3000",
     "build": "nx build",
     "test-nx": "nx test",
-    "test": "npx start-server-and-test start http://localhost:3000 cy:run:datalakehouse",
+    "test": "npx start-server-and-test start http://localhost:3000 cypress",
     "cypress": "npx cypress run --env 'configFile=demo'"
   },
   "private": true,
