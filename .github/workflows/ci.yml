@@ -7,44 +7,52 @@ on:
   pull_request:
 
 jobs:
-  checkout: 
+  checkout:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-      with:
-        ref: master
+      - uses: actions/checkout@v3
+        with:
+          ref: master
   test:
     runs-on: ubuntu-latest
     name: Testing
     needs: checkout
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        ref: master
-    - name: Use Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-    - run: npm install
-    - name: Use Node.js for Test
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-    # - run: npm run test
-    # - run: Cypress run
-    - uses: cypress-io/github-action@v4
-      with:
-        record: true
-        config-file: cypress/config/demo.json
-    - uses: actions/upload-artifact@v2
-      if: failure()
-      with:
-        name: cypress-screenshots
-        path: cypress/screenshots
-      # Test run video was always captured, so this action uses "always()" condition
-    - uses: actions/upload-artifact@v2
-      if: always()
-      with:
-        name: cypress-videos
-        path: cypress/videos
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: master
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install
+      - name: Use Node.js for Test
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      # - run: npm run test
+      # - run: Cypress run
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: cypress-io/github-action@v4
+        with:
+          record: true
+          config-file: cypress/config/demo.json
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+        # Test run video was always captured, so this action uses "always()" condition
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
