@@ -32,8 +32,8 @@ jobs:
       with:
         node-version: 16
     # - run: npm run test
-    - run: Cypress run
-      uses: cypress-io/github-action@v4
+    # - run: Cypress run
+    - uses: cypress-io/github-action@v4
         with:
           record: true
           config-file: demo.json
