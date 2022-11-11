@@ -31,4 +31,25 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 16
-    - run: npm run test
+    # - run: npm run test
+    - run: Cypress run
+      uses: cypress-io/github-action@v4
+        with:
+          record: true
+          config-file: demo.json
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # pass GitHub token to allow accurately detecting a build vs a re-run build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      # Test run video was always captured, so this action uses "always()" condition
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
